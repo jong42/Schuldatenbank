@@ -19,13 +19,14 @@ Ein Lehrer kann mehrere Kurse unterrichten, ein Kurs wird aber immer von genau e
 
 ## Tabellen
 
-Lehrer haben einen Namen, Vornamen und ein Geburtsdatum. Durch diese drei Eigenschaften kann ein Lehrer eindeutig identifiziert werden. Lehrer haben außerdem bis zu drei Fächer, die sie unterrichten können. Lehrer unterrichten Kurse. In einem Kurs wird ein bestimmtes Fach unterrichtet, der Kurs findet regelmäßig an einem bestimmten Wochentag und zu einer bestimmten Uhrzeit statt. Durch Wochentag und Uhrzeit sowie den unterrichtenden Lehrer wird ein Kurs eindeutig identifiziert.
+Lehrer haben einen Namen, Vornamen und ein Geburtsdatum. Durch diese drei Eigenschaften kann ein Lehrer eindeutig identifiziert werden. Lehrer haben außerdem bis zu drei Fächer, die sie unterrichten können. Schüler haben ebenfalls Namen, Vornamen und ein Geburtsdatum, und können durch diese Eigenschaften eindeutig identifiziert werden. Schüler gehören zu einer Klasse. Klassen belegen Kurse, in denen sie von einem Lehrer in einem Fach unterrichtet werden. Kurse werden durch ihre Kursbezeichnung identifiziert. Kurse finden zu bestimmten Terminen statt, ein Kurstermin wird duch den dazugehörigen Kurs sowie den Wochentag und die Uhrzeit, an dem er stattfindet, identifiziert. Schüler erhalten Klausurnoten und Mitarbeitsnoten in den einzelnen Kursen. Eine Note gehört zu einem Schüler, der wiederum durch Name, Vorname und Geburtsdatum identifiziert wird. Diese drei Attribute sowie der Kursname sind notwendig, um eine Note eindeutig zu identifizieren. Bei Klausurnoten ist zusätzlich noch das Datum der Klausur notwendig, da innerhalb eines Kurses mehrere Klausuren geschrieben werden. Bei Mitarbeitsnoten ist dies nicht notwendig, da es in einem Kurs nur eine Mitarbeitsnote pro Schüler gibt. Schließlich muss natürlich auch die Note selbst ein Eintrag in der Tabelle sein.
 
-Schüler(<ins>Name</ins>, <ins>Vorname</ins>, <ins>Geburtsdatum</ins>, Klasse) <br />
 Lehrer(<ins>Name</ins>, <ins>Vorname</ins>, <ins>Geburtsdatum</ins>, Fach1, Fach2, Fach3) <br />
-Kurse (Fach, <ins>Lehrer</ins>, Klasse, <ins>Wochentag</ins>, <ins>Uhrzeit</ins>) <br />
-Klausuren(<ins>Kurs</ins>, <ins>Schülername</ins>, <ins>Schülervorname</ins>, <ins>Prüfungsdatum</ins>, Note) <br />
-Mitarbeitsnoten(<ins>Kurs</ins>, <ins>Schülername</ins>, <ins>Schülervorname, Note)</ins> <br />
+Schüler(<ins>Name</ins>, <ins>Vorname</ins>, <ins>Geburtsdatum</ins>, Klasse) <br />
+Kurse (<ins>Kursname</ins>, Fach, Lehrer, Klasse) <br />
+Kurstermine (<ins>Kursbezeichnung</ins>,  <ins>Wochentag</ins>, <ins>Uhrzeit</ins> ) <br />
+Klausurnoten(<ins>Kurs</ins>, <ins>Schülername</ins>, <ins>Schülervorname</ins>,  <ins>Schüler-Geburtsdatum</ins>, <ins>Prüfungsdatum</ins>, Note) <br />
+Mitarbeitsnoten(<ins>Kurs</ins>, <ins>Schülername</ins>, <ins>Schülervorname,  <ins>Schüler-Geburtsdatum</ins>, Note)</ins> <br />
 
 
 ## Weiterführende Arbeiten
