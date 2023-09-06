@@ -1,5 +1,5 @@
 # Schuldatenbank
-Dieses Projekt dient als Demonstration dafür, wie eine Lehrer- und Schülerdatenbank in C# realisiert werden kann. Das Projekt ist inspiriert von der [LUSD](https://www.sinc.de/lusd/) Datenbank.
+Dieses Projekt dient als Demonstration dafür, wie eine Lehrer- und Schülerdatenbank in C# realisiert werden kann. Das Projekt ist inspiriert durch die [LUSD](https://www.sinc.de/lusd/) Datenbank.
 
 ## Tabellen
 
