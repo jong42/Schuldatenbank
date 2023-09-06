@@ -20,7 +20,7 @@ Ein Lehrer kann mehrere Kurse unterrichten, ein Kurs wird aber immer von genau e
 
 * Lehrer(<ins>Name</ins>, <ins>Vorname</ins>, <ins>Geburtsdatum</ins>, Fach1, Fach2, Fach3) <br />
 * Schüler(<ins>Name</ins>, <ins>Vorname</ins>, <ins>Geburtsdatum</ins>, Klasse) <br />
-* Kurse (<ins>Kursname</ins>, Fach, Lehrer, Klasse) <br />
+* Kurse (<ins>Kursbezeichnung</ins>, Fach, Lehrer, Klasse) <br />
 * Kurstermine (<ins>Kursbezeichnung</ins>,  <ins>Wochentag</ins>, <ins>Uhrzeit</ins> ) <br />
 * Klausurnoten(<ins>Kurs</ins>, <ins>Schülername</ins>, <ins>Schülervorname</ins>,  <ins>Schüler-Geburtsdatum</ins>, <ins>Prüfungsdatum</ins>, Note) <br />
 * Mitarbeitsnoten(<ins>Kurs</ins>, <ins>Schülername</ins>, <ins>Schülervorname,  <ins>Schüler-Geburtsdatum</ins>, Note)</ins> <br />
