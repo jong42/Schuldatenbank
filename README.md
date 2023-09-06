@@ -9,6 +9,11 @@ Dieses Projekt dient als Demonstration dafür, wie eine Lehrer- und Schülerdate
  * Stundenplan für Lehrer ausgeben
  * Noten berechnen und Zeugnisse generieren
 
+## ER - Diagramm
+
+![ER_Diagramm](https://github.com/jong42/Schuldatenbank/assets/18439476/0fb42319-6393-4ff1-98e4-c27e3a10261e)
+
+
 ## Tabellen
 
 Schüler(<ins>Name</ins>, <ins>Vorname</ins>, <ins>Geburtsdatum</ins>, Klasse) <br />
