@@ -34,4 +34,5 @@ Raumbelegungen hinzufügen <br />
 Kurse, die weniger als einmal die Woche stattfinden <br />
 Halbjahr berücksichtigen <br />
 Schüler wechselt Klasse <br />
+Klassen haben natürlich nicht geschlossen die selben Kurse, jeder Schüler kann individuell Kurse besuchen <br />
 
