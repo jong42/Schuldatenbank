@@ -2,7 +2,7 @@
 Dieses Projekt dient als Demonstration dafür, wie eine Lehrer- und Schülerdatenbank in C# realisiert werden kann. Das Projekt ist inspiriert durch die [LUSD](https://www.sinc.de/lusd/) Datenbank. Die Datenbank soll vor allem dazu dienen, Schulnoten und Stundenpläne zu verwalten. Wichtige Entitäten in der Datenbank sind Lehrer, Schüler, Klassen, Kurse und Noten.
 
 ## Geplante Features
- * Grundlegende Funktionen: Hinzufügen und Löschen von Schülern, Lehrern, Kursen
+ * Grundlegende Funktionen: Hinzufügen und Löschen von Schülern, Lehrern, Kursen, Noten
  * Zeitkonflikte zwischen Kursen erkennen
  * Automatisiert einen konfliktfreien Stundenplan für alle Klassen erstellen
  * Stundenplan für Klassen ausgeben
