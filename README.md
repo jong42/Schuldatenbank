@@ -10,8 +10,7 @@ Dieses Projekt dient als Demonstration dafür, wie eine Lehrer- und Schülerdate
  * Noten berechnen und Zeugnisse generieren
 
 ## ER - Diagramm
-
-Die Beziehungen zwischen den einzelnen Entitäten lauten wie folgt: <br />
+Die Datenbank soll vor allem dazu dienen, Schulnoten und Stundenpläne zu verwalten. Wichtige Entitäten in der Datenbank sind daher Lehrer, Schüler, Klassen, Kurse und Noten. Es gibt folgende Beziehungen zwischen den Entitäten: <br />
 Ein Lehrer kann mehrere Kurse unterrichten, ein Kurs wird aber immer von genau einem Lehrer unterrichtet. Ein Kurs kann an mehreren Kursterminen stattfinden, ein Kurstermin gehört aber immer zu genau einem Kurs. Ein Kurs wird von genau einer Klasse besucht, eine Klasse besucht jedoch mehrere Kurse. Eine Klasse enthält mehrere Schüler, ein Schüler gehört zu genau einer Klasse. Schüler erhalten Mitarbeitsnoten, eine Mitarbeitsnote gehört aber immer zu genau einem Schüler. Schüler erhalten ebenso Klausurnoten, eine Klausurnote gehört immer zu genau einem Schüler. In Kursen werden Mitarbeitsnoten vergeben: Mehrere Mitarbeitsnoten können in einem Kurs vergeben werden, eine Mitarbeitsnote gehört immer zu genau einem Kurs. In Kursen werden ebenso Klausurnoten vergeben: Mehrere Klausurnoten können in einem Kurs vergeben werden, eine Klausurnote gehört immer zu genau einem Kurs.
 
 
