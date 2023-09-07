@@ -28,6 +28,9 @@ Ein Lehrer kann mehrere Kurse unterrichten, ein Kurs wird aber immer von genau e
 **Erläuterung:** <br />
 Lehrer haben einen Namen, Vornamen und ein Geburtsdatum. Durch diese drei Eigenschaften kann ein Lehrer eindeutig identifiziert werden. Lehrer haben außerdem bis zu drei Fächer, die sie unterrichten können. Schüler haben ebenfalls Namen, Vornamen und ein Geburtsdatum, und können durch diese Eigenschaften eindeutig identifiziert werden. Schüler gehören zu einer Klasse. Klassen belegen Kurse, in denen sie von einem Lehrer in einem Fach unterrichtet werden. Kurse werden durch ihre Kursbezeichnung identifiziert. Kurse finden zu bestimmten Terminen statt, ein Kurstermin wird duch den dazugehörigen Kurs sowie den Wochentag und die Uhrzeit, an dem er stattfindet, identifiziert. Schüler erhalten Klausurnoten und Mitarbeitsnoten in den einzelnen Kursen. Eine Note gehört zu einem Schüler, der wiederum durch Name, Vorname und Geburtsdatum identifiziert wird. Diese drei Attribute sowie der Kursname sind notwendig, um eine Note eindeutig zu identifizieren. Bei Klausurnoten ist zusätzlich noch das Datum der Klausur notwendig, da innerhalb eines Kurses mehrere Klausuren geschrieben werden. Bei Mitarbeitsnoten ist dies nicht notwendig, da es in einem Kurs nur eine Mitarbeitsnote pro Schüler gibt. Schließlich muss natürlich auch die Note selbst als Eintrag enthalten sein.
 
+## Erstellung der Datenbank
+Es wurde eine Postgres-Datenbank erstellt und mit künstlich erzeugten Daten gefüllt. Für die Erstellung der Datenbank wurden die Skripte create_db.sql und create_tables.sql verwendet. Für das Erzeugen und Einfügen der Daten wurde create_mock_data.cs verwendet.
+
 ## Weiterführende Arbeiten
 
 Raumbelegungen hinzufügen <br />
