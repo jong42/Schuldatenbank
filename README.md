@@ -33,6 +33,7 @@ Es wurde eine Postgres-Datenbank erstellt und mit künstlich erzeugten Daten gef
 
 ## Weiterführende Arbeiten
 
+Credentials nicht hardcoden <br />
 Raumbelegungen hinzufügen <br />
 Kurse, die weniger als einmal die Woche stattfinden <br />
 Halbjahr berücksichtigen <br />
