@@ -9,6 +9,30 @@ Dieses Projekt dient als Demonstration dafür, wie eine Lehrer- und Schülerdate
  * Stundenplan für Lehrer ausgeben
  * Noten berechnen und Zeugnisse generieren
 
+## Voraussetzungen
+
+* pgAdmin 4
+* Visual Studio Code mit C# Extension (TODO: Welche Extensions genau?)
+  
+## Anleitung
+
+1. Erstellen Sie eine neue PostgreSQL-Datenbank, indem Sie pgAdmin 4 öffnen und create_db.sql ausführen
+2. Erstellen Sie die (leeren) Tabellen in der Datenbank, indem Sie create_tables.sql ausführen
+3. Um die Datenbank mit künstlichen Daten zu füllen, starten Sie ein neues Terminal in Visual Studio Code und geben Sie folgenden Befehl ein: `dotnet run fill_db`
+4. Um einen Eintrag zur Lehrertabelle hinzuzufügen, geben Sie folgenden Befehl ein: `dotnet run add_teacher NAME VORNAME GEBDATUM FACH1 FACH2 FACH3`, wobei die Worte in Großbuchstaben durch die jeweiligen Attribute zu ersetzen sind, also z.B. `dotnet run add_teacher Mustermann Max 01.01.1980 Deutsch Mathe Englisch`
+5. Um einen Eintrag zur Schülertabelle hinzuzufügen, geben Sie folgenden Befehl ein: `dotnet run add_student NAME VORNAME GEBDATUM KLASSE`, wobei die Worte in Großbuchstaben durch die jeweiligen Attribute zu ersetzen sind, also z.B. `dotnet run add_student Mustermann Max 01.01.2010 9a`
+6. Um einen Eintrag zur Kurstabelle hinzuzufügen, geben Sie folgenden Befehl ein: `dotnet run add_course FACH LEHRERNAME LEHRERVORNAME LEHRERGEBDATUM KLASSE`, wobei die Worte in Großbuchstaben durch die jeweiligen Attribute zu ersetzen sind, also z.B. `dotnet run add_course Deutsch Mustermann Max 01.01.1980 9a`. Beachten Sie, dass der entsprechende Lehrer bereits in der Lehrertabelle hinterlegt sein muss.
+7. Um einen Eintrag zur Tabelle der Kurstermine hinzuzufügen, geben Sie folgenden Befehl ein: `dotnet run add_coursedate KURSBEZEICHNUNG WOCHENTAG UHRZEIT`, wobei die Worte in Großbuchstaben durch die jeweiligen Attribute zu ersetzen sind, also z.B. `dotnet run add_coursedate Deutsch9a Montag 10:15`. Beachten Sie, dass der entsprechende Kurs bereits in der Kurstabelle hinterlegt sein muss.
+8. Um einen Eintrag zur Tabelle der Klausurnoten hinzuzufügen, geben Sie folgenden Befehl ein: `dotnet run add_examgrades KURSBEZEICHNUNG SCHÜLERNAME SCHÜLERVORNAME SCHÜLERGEBDATUM PRÜFUNGSDATUM NOTE`, wobei die Worte in Großbuchstaben durch die jeweiligen Attribute zu ersetzen sind, also z.B. `dotnet run add_examgrade Deutsch9a Mustermann Max 01.01.2010 01.01.2024 2,0`. Beachten Sie, dass Kurs und Schüler bereits in den entsprechenden Tabellen hinterlegt sein müssen.
+9. Um einen Eintrag zur Tabelle der Mitarbeitsnoten hinzuzufügen, geben Sie folgenden Befehl ein: `dotnet run add_oralgrades KURSBEZEICHNUNG SCHÜLERNAME SCHÜLERVORNAME SCHÜLERGEBDATUM NOTE`, wobei die Worte in Großbuchstaben durch die jeweiligen Attribute zu ersetzen sind, also z.B. `dotnet run add_examgrade Deutsch9a Mustermann Max 01.01.2010 2,0`. Beachten Sie, dass Kurs und Schüler bereits in den entsprechenden Tabellen hinterlegt sein müssen.
+10. Um einen Eintrag aus der Lehrertabelle zu löschen, geben Sie folgenden Befehl ein: dotnet run delete_teacher NAME VORNAME GEBDATUM`, wobei die Worte in Großbuchstaben durch die jeweiligen Attribute zu ersetzen sind , also z.B. `dotnet run delete_teacher Mustermann Max 01.01.1980`. Beachten Sie, dass vorher alle Kurse gelöscht werden müssen, die dem betreffenden Lehrer zugeteilt waren.
+11. Um einen Eintrag aus der Schülertabelle zu löschen, geben Sie folgenden Befehl ein: `dotnet run delete_student NAME VORNAME GEBDATUM`, wobei die Worte in Großbuchstaben durch die jeweiligen Attribute zu ersetzen sind, also z.B. `dotnet run delete_student Mustermann Max 01.01.2010`. Beachten Sie, dass vorher alle Noten gelöscht werden müssen, die dem entsprechenden Schüler zugeteilt waren.
+12. Um einen Eintrag aus der Kurstabelle zu löschen, geben Sie folgenden Befehl ein: `dotnet run delete_course KURSBEZEICHNUNG`, wobei das Wort in Großbuchstaben durch die Kursbezeichnung zu ersetzen ist, also z.B. `dotnet run delete_course Deutsch9a`. Beachten Sie, dass vorher alle Kurstermine des entsprechenden Kurses gelöscht werden müssen.
+13. Um einen Eintrag aus der Tabelle der Kurstermine zu löschen, geben Sie folgenden Befehl ein: `dotnet run delete_coursedate KURSBEZEICHNUNG WOCHENTAG UHRZEIT`, wobei die Worte in Großbuchstaben durch die jeweiligen Attribute zu ersetzen sind, also z.B. `dotnet run delete_coursedate Deutsch9a Montag 10:15`
+14. Um einen Eintrag aus der Tabelle der Klausurnoten zu löschen, geben Sie folgenden Befehl ein: `dotnet run delete_examgrades KURSBEZEICHNUNG SCHÜLERNAME SCHÜLERVORNAME SCHÜLERGEBDATUM PRÜFUNGSDATUM`, wobei die Worte in Großbuchstaben durch die jeweiligen Attribute zu ersetzen sind, also z.B. `dotnet run delete_examgrade Deutsch9a Mustermann Max 01.01.2010 01.01.2024`
+15. Um einen Eintrag aus der Tabelle der Mitarbeitsnoten zu löschen, geben Sie folgenden Befehl ein: `dotnet run delete_oralgrades KURSBEZEICHNUNG SCHÜLERNAME SCHÜLERVORNAME SCHÜLERGEBDATUM`, wobei die Worte in Großbuchstaben durch die jeweiligen Attribute zu ersetzen sind, also z.B. `dotnet run add_examgrade Deutsch9a Mustermann Max 01.01.2010`
+
+
 ## ER - Diagramm
 
 ![ER_Diagramm (1)](https://github.com/jong42/Schuldatenbank/assets/18439476/35c8dffc-3844-4192-b460-09eac97e379f)
@@ -28,8 +52,6 @@ Ein Lehrer kann mehrere Kurse unterrichten, ein Kurs wird aber immer von genau e
 **Erläuterung:** <br />
 Lehrer haben einen Namen, Vornamen und ein Geburtsdatum. Durch diese drei Eigenschaften kann ein Lehrer eindeutig identifiziert werden. Lehrer haben außerdem bis zu drei Fächer, die sie unterrichten können. Schüler haben ebenfalls Namen, Vornamen und ein Geburtsdatum, und können durch diese Eigenschaften eindeutig identifiziert werden. Schüler gehören zu einer Klasse. Klassen belegen Kurse, in denen sie von einem Lehrer in einem Fach unterrichtet werden. Kurse werden durch ihre Kursbezeichnung identifiziert. Kurse finden zu bestimmten Terminen statt, ein Kurstermin wird duch den dazugehörigen Kurs sowie den Wochentag und die Uhrzeit, an dem er stattfindet, identifiziert. Schüler erhalten Klausurnoten und Mitarbeitsnoten in den einzelnen Kursen. Eine Note gehört zu einem Schüler, der wiederum durch Name, Vorname und Geburtsdatum identifiziert wird. Diese drei Attribute sowie der Kursname sind notwendig, um eine Note eindeutig zu identifizieren. Bei Klausurnoten ist zusätzlich noch das Datum der Klausur notwendig, da innerhalb eines Kurses mehrere Klausuren geschrieben werden. Bei Mitarbeitsnoten ist dies nicht notwendig, da es in einem Kurs nur eine Mitarbeitsnote pro Schüler gibt. Schließlich muss natürlich auch die Note selbst als Eintrag enthalten sein.
 
-## Erstellung der Datenbank
-Es wurde eine Postgres-Datenbank erstellt und mit künstlich erzeugten Daten gefüllt. Für die Erstellung der Datenbank wurden die Skripte create_db.sql und create_tables.sql verwendet. Für das Erzeugen und Einfügen der Daten wurde create_mock_data.cs verwendet.
 
 ## Weiterführende Arbeiten
 
