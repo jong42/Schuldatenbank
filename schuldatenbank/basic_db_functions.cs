@@ -4,7 +4,7 @@ namespace basic_functions
 {
     class BasicDBHandler
     {
-        async void AddLehrer(string name, string vorname, string geburtsdatum, string fach1, string fach2, string fach3)
+        public async void AddLehrer(string name, string vorname, string geburtsdatum, string fach1, string fach2, string fach3)
         {
             var connectionString = "Host=localhost;Username=postgres;Password=mypass;Database=schuldatenbank";
             await using var dataSource = NpgsqlDataSource.Create(connectionString);
@@ -13,7 +13,7 @@ namespace basic_functions
             await using var command = dataSource.CreateCommand(sql_command);
             await using var reader = await command.ExecuteReaderAsync();
         }
-        async void AddSchüler(string name, string vorname, string geburtsdatum, string klasse)
+        public async void AddSchüler(string name, string vorname, string geburtsdatum, string klasse)
         {
             var connectionString = "Host=localhost;Username=postgres;Password=mypass;Database=schuldatenbank";
             await using var dataSource = NpgsqlDataSource.Create(connectionString);
@@ -22,7 +22,7 @@ namespace basic_functions
             await using var command = dataSource.CreateCommand(sql_command);
             await using var reader = await command.ExecuteReaderAsync();
         }
-        async void AddKurse(string fach, string lehrername, string lehrervorname, string lehrergebdatum, string klasse)
+        public async void AddKurse(string fach, string lehrername, string lehrervorname, string lehrergebdatum, string klasse)
         {
             var connectionString = "Host=localhost;Username=postgres;Password=mypass;Database=schuldatenbank";
             await using var dataSource = NpgsqlDataSource.Create(connectionString);
@@ -32,7 +32,7 @@ namespace basic_functions
             await using var command = dataSource.CreateCommand(sql_command);
             await using var reader = await command.ExecuteReaderAsync();
         }
-        async void AddKurstermin(string kursbezeichnung, string wochentag, string uhrzeit)
+        public async void AddKurstermin(string kursbezeichnung, string wochentag, string uhrzeit)
         {
             var connectionString = "Host=localhost;Username=postgres;Password=mypass;Database=schuldatenbank";
             await using var dataSource = NpgsqlDataSource.Create(connectionString);
@@ -41,7 +41,7 @@ namespace basic_functions
             await using var command = dataSource.CreateCommand(sql_command);
             await using var reader = await command.ExecuteReaderAsync();
         }
-        async void AddKlausurnote(string kurs, string schülername, string schülervorname, string schülergebdatum, string prüfungsdatum, string note)
+        public async void AddKlausurnote(string kurs, string schülername, string schülervorname, string schülergebdatum, string prüfungsdatum, string note)
         {
             var connectionString = "Host=localhost;Username=postgres;Password=mypass;Database=schuldatenbank";
             await using var dataSource = NpgsqlDataSource.Create(connectionString);
@@ -50,7 +50,7 @@ namespace basic_functions
             await using var command = dataSource.CreateCommand(sql_command);
             await using var reader = await command.ExecuteReaderAsync();
         }
-        async void AddMitarbeitsnote(string kurs, string schülername, string schülervorname, string schülergebdatum, string note)
+        public async void AddMitarbeitsnote(string kurs, string schülername, string schülervorname, string schülergebdatum, string note)
         {
             var connectionString = "Host=localhost;Username=postgres;Password=mypass;Database=schuldatenbank";
             await using var dataSource = NpgsqlDataSource.Create(connectionString);
@@ -59,7 +59,7 @@ namespace basic_functions
             await using var command = dataSource.CreateCommand(sql_command);
             await using var reader = await command.ExecuteReaderAsync();
         }
-        async void DeleteLehrer(string name, string vorname, string geburtsdatum)
+        public async void DeleteLehrer(string name, string vorname, string geburtsdatum)
         {
             var connectionString = "Host=localhost;Username=postgres;Password=mypass;Database=schuldatenbank";
             await using var dataSource = NpgsqlDataSource.Create(connectionString);
@@ -67,7 +67,7 @@ namespace basic_functions
             await using var command = dataSource.CreateCommand(sql_command);
             await using var reader = await command.ExecuteReaderAsync();
         }
-        async void DeleteSchüler(string name, string vorname, string geburtsdatum)
+        public async void DeleteSchüler(string name, string vorname, string geburtsdatum)
         {
             var connectionString = "Host=localhost;Username=postgres;Password=mypass;Database=schuldatenbank";
             await using var dataSource = NpgsqlDataSource.Create(connectionString);
@@ -75,7 +75,7 @@ namespace basic_functions
             await using var command = dataSource.CreateCommand(sql_command);
             await using var reader = await command.ExecuteReaderAsync();
         }
-        async void DeleteKurse(string kursbezeichnung)
+        public async void DeleteKurse(string kursbezeichnung)
         {
             var connectionString = "Host=localhost;Username=postgres;Password=mypass;Database=schuldatenbank";
             await using var dataSource = NpgsqlDataSource.Create(connectionString);
@@ -83,7 +83,7 @@ namespace basic_functions
             await using var command = dataSource.CreateCommand(sql_command);
             await using var reader = await command.ExecuteReaderAsync();
         }
-        async void DeleteKurstermin(string kursbezeichnung, string wochentag, string uhrzeit)
+        public async void DeleteKurstermin(string kursbezeichnung, string wochentag, string uhrzeit)
         {
             var connectionString = "Host=localhost;Username=postgres;Password=mypass;Database=schuldatenbank";
             await using var dataSource = NpgsqlDataSource.Create(connectionString);
@@ -91,7 +91,7 @@ namespace basic_functions
             await using var command = dataSource.CreateCommand(sql_command);
             await using var reader = await command.ExecuteReaderAsync();
         }
-        async void DeleteKlausurnote(string kursbezeichnung, string schülername, string schülervorname, string schülergeburtsdatum, string prüfungsdatum)
+        public async void DeleteKlausurnote(string kursbezeichnung, string schülername, string schülervorname, string schülergeburtsdatum, string prüfungsdatum)
         {
             var connectionString = "Host=localhost;Username=postgres;Password=mypass;Database=schuldatenbank";
             await using var dataSource = NpgsqlDataSource.Create(connectionString);
@@ -99,7 +99,7 @@ namespace basic_functions
             await using var command = dataSource.CreateCommand(sql_command);
             await using var reader = await command.ExecuteReaderAsync();
         }
-        async void DeleteMitarbeitsnote(string kursbezeichnung, string schülername, string schülervorname, string schülergeburtsdatum)
+        public async void DeleteMitarbeitsnote(string kursbezeichnung, string schülername, string schülervorname, string schülergeburtsdatum)
         {
             var connectionString = "Host=localhost;Username=postgres;Password=mypass;Database=schuldatenbank";
             await using var dataSource = NpgsqlDataSource.Create(connectionString);

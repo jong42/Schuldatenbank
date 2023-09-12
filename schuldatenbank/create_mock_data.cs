@@ -100,7 +100,7 @@ namespace mock_data
             return note;
         }
 
-        async void InsertLehrer(int lehrernr)
+        public async void InsertLehrer(int lehrernr)
         {
             var connectionString = "Host=localhost;Username=postgres;Password=mypass;Database=schuldatenbank";
             await using var dataSource = NpgsqlDataSource.Create(connectionString);
@@ -113,7 +113,7 @@ namespace mock_data
             }
         }
 
-        async void InsertSchüler(int schüler_pro_klasse)
+        public async void InsertSchüler(int schüler_pro_klasse)
         {
             var connectionString = "Host=localhost;Username=postgres;Password=mypass;Database=schuldatenbank";
             await using var dataSource = NpgsqlDataSource.Create(connectionString);
@@ -130,7 +130,7 @@ namespace mock_data
             }
         }
 
-        async void InsertKurse(int lehrernr) // 1 Kurs pro Klasse und Fach
+        public async void InsertKurse(int lehrernr) // 1 Kurs pro Klasse und Fach
         {
 
             var connectionString = "Host=localhost;Username=postgres;Password=mypass;Database=schuldatenbank";
@@ -188,7 +188,7 @@ namespace mock_data
             }
         }
 
-        async void InsertNoten(int schüler_pro_klasse)
+        public async void InsertNoten(int schüler_pro_klasse)
         {
             var connectionString = "Host=localhost;Username=postgres;Password=mypass;Database=schuldatenbank";
             await using var dataSource = NpgsqlDataSource.Create(connectionString);
