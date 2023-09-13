@@ -57,10 +57,6 @@ Lehrer haben einen Namen, Vornamen und ein Geburtsdatum. Durch diese drei Eigens
 
 ## Nächste Schritte
 
-Credentials nicht hardcoden <br />
-
-
-
  * Tests schreiben
  * In Docker COntainer verpacken
  * Weitere Feaures hinzufügen (Stundenpläne erstellen, Gesamtnoten berechnen)
