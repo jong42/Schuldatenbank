@@ -1,13 +1,16 @@
 using basic_functions;
 using mock_data;
 
+string username = "postgres";
+string password = "mypass";
+
 if (args.Length > 0)
 {
     if (args[0] == "fill_db")
     {
         int lehrernr = 25;
         int schülerproklasse = 25;
-        MockData mymockdata = new MockData();
+        MockData mymockdata = new MockData(username, password);
         mymockdata.InsertLehrer(lehrernr);
         mymockdata.InsertSchüler(schülerproklasse);
         mymockdata.InsertKurse(lehrernr);
@@ -15,62 +18,62 @@ if (args.Length > 0)
     }
     else if (args[0] == "add_teacher")
     {
-        BasicDBHandler mybasicdbhandler = new BasicDBHandler();
+        BasicDBHandler mybasicdbhandler = new BasicDBHandler(username, password);
         mybasicdbhandler.AddLehrer(args[1], args[2], args[3], args[4], args[5], args[6]);
     }
     else if (args[0] == "add_student")
     {
-        BasicDBHandler mybasicdbhandler = new BasicDBHandler();
+        BasicDBHandler mybasicdbhandler = new BasicDBHandler(username, password);
         mybasicdbhandler.AddSchüler(args[1], args[2], args[3], args[4]);
     }
     else if (args[0] == "add_course")
     {
-        BasicDBHandler mybasicdbhandler = new BasicDBHandler();
+        BasicDBHandler mybasicdbhandler = new BasicDBHandler(username, password);
         mybasicdbhandler.AddKurse(args[1], args[2], args[3], args[4], args[5]);
     }
     else if (args[0] == "add_coursedate")
     {
-        BasicDBHandler mybasicdbhandler = new BasicDBHandler();
+        BasicDBHandler mybasicdbhandler = new BasicDBHandler(username, password);
         mybasicdbhandler.AddKurstermin(args[1], args[2], args[3]);
     }
     else if (args[0] == "add_examgrade")
     {
-        BasicDBHandler mybasicdbhandler = new BasicDBHandler();
+        BasicDBHandler mybasicdbhandler = new BasicDBHandler(username, password);
         mybasicdbhandler.AddKlausurnote(args[1], args[2], args[3], args[4], args[5], args[6]);
     }
     else if (args[0] == "add_oralgrade")
     {
-        BasicDBHandler mybasicdbhandler = new BasicDBHandler();
+        BasicDBHandler mybasicdbhandler = new BasicDBHandler(username, password);
         mybasicdbhandler.AddMitarbeitsnote(args[1], args[2], args[3], args[4], args[5]);
     }
     else if (args[0] == "delete_teacher")
     {
-        BasicDBHandler mybasicdbhandler = new BasicDBHandler();
+        BasicDBHandler mybasicdbhandler = new BasicDBHandler(username, password);
         mybasicdbhandler.DeleteLehrer(args[1], args[2], args[3]);
     }
     else if (args[0] == "delete_student")
     {
-        BasicDBHandler mybasicdbhandler = new BasicDBHandler();
+        BasicDBHandler mybasicdbhandler = new BasicDBHandler(username, password);
         mybasicdbhandler.DeleteSchüler(args[1], args[2], args[3]);
     }
     else if (args[0] == "delete_course")
     {
-        BasicDBHandler mybasicdbhandler = new BasicDBHandler();
+        BasicDBHandler mybasicdbhandler = new BasicDBHandler(username, password);
         mybasicdbhandler.DeleteKurse(args[1]);
     }
     else if (args[0] == "delete_coursedate")
     {
-        BasicDBHandler mybasicdbhandler = new BasicDBHandler();
+        BasicDBHandler mybasicdbhandler = new BasicDBHandler(username, password);
         mybasicdbhandler.DeleteKurstermin(args[1], args[2], args[3]);
     }
     else if (args[0] == "delete_examgrade")
     {
-        BasicDBHandler mybasicdbhandler = new BasicDBHandler();
+        BasicDBHandler mybasicdbhandler = new BasicDBHandler(username, password);
         mybasicdbhandler.DeleteKlausurnote(args[1], args[2], args[3], args[4], args[5]);
     }
     else if (args[0] == "delete_oralgrade")
     {
-        BasicDBHandler mybasicdbhandler = new BasicDBHandler();
+        BasicDBHandler mybasicdbhandler = new BasicDBHandler(username, password);
         mybasicdbhandler.DeleteMitarbeitsnote(args[1], args[2], args[3], args[4]);
     }
 

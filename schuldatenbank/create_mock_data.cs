@@ -9,6 +9,14 @@ namespace mock_data
 {
     class MockData
     {
+
+        string username;
+        string password;
+        public MockData(string username, string password)
+        {
+            this.username = username;
+            this.password = password;
+        }
         Random random = new Random();
 
         string[] fächer = { "Deutsch", "Mathe", "Englisch", "Chemie", "Physik", "Kunst", "Musik", "Sport", "Geographie", "Geschichte" };
@@ -103,9 +111,9 @@ namespace mock_data
 
         public async void InsertLehrer(int lehrernr)
         {
-            var connectionString = "Host=localhost;Username=postgres;Password=mypass;Database=schuldatenbank";
+            var connectionString = "Host=localhost;Username="+this.username+";Password="+this.password+"mypass;Database=schuldatenbank";
             using var conn = new NpgsqlConnection(connectionString);
-            
+
             for (int i = 0; i < lehrernr; i++)
             {
                 conn.Open();
@@ -124,7 +132,7 @@ namespace mock_data
 
         public async void InsertSchüler(int schüler_pro_klasse)
         {
-            var connectionString = "Host=localhost;Username=postgres;Password=mypass;Database=schuldatenbank";
+            var connectionString = "Host=localhost;Username="+this.username+";Password="+this.password+"mypass;Database=schuldatenbank";
             await using var dataSource = NpgsqlDataSource.Create(connectionString);
             for (int i = 0; i < klassen.Length; i++)
             {
@@ -142,7 +150,7 @@ namespace mock_data
         public async void InsertKurse(int lehrernr) // 1 Kurs pro Klasse und Fach
         {
 
-            var connectionString = "Host=localhost;Username=postgres;Password=mypass;Database=schuldatenbank";
+            var connectionString = "Host=localhost;Username="+this.username+";Password="+this.password+"mypass;Database=schuldatenbank";
             await using var dataSource = NpgsqlDataSource.Create(connectionString);
             //Retrieve all lehrers from database
             await using var getlehrer_command = dataSource.CreateCommand("SELECT * FROM lehrer;");
@@ -199,7 +207,7 @@ namespace mock_data
 
         public async void InsertNoten(int schüler_pro_klasse)
         {
-            var connectionString = "Host=localhost;Username=postgres;Password=mypass;Database=schuldatenbank";
+            var connectionString = "Host=localhost;Username="+this.username+";Password="+this.password+"mypass;Database=schuldatenbank";
             await using var dataSource = NpgsqlDataSource.Create(connectionString);
             // Retrieve all schüler from database
             int schülernr = schüler_pro_klasse * klassen.Length;
