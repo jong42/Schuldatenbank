@@ -1,5 +1,6 @@
 ﻿using System.Data.SqlClient;
 using System.Globalization;
+using System.Runtime.InteropServices;
 using Microsoft.VisualBasic;
 using Npgsql;
 
@@ -103,13 +104,21 @@ namespace mock_data
         public async void InsertLehrer(int lehrernr)
         {
             var connectionString = "Host=localhost;Username=postgres;Password=mypass;Database=schuldatenbank";
-            await using var dataSource = NpgsqlDataSource.Create(connectionString);
+            using var conn = new NpgsqlConnection(connectionString);
+            
             for (int i = 0; i < lehrernr; i++)
             {
+                conn.Open();
                 string lehrer = GenerateLehrer(lastnames, firstnames, fächer, 1960, 1995);
-                string sql_command = "INSERT INTO lehrer(name, vorname, geburtsdatum, fach1, fach2, fach3) VALUES(" + lehrer + ")";
-                await using var command = dataSource.CreateCommand(sql_command);
-                await using var reader = await command.ExecuteReaderAsync();
+                string sql_command = "INSERT INTO lehrer(name, vorname, geburtsdatum, fach1, fach2, fach3) VALUES(" + lehrer + ");";
+                await using var cmd = new NpgsqlCommand(sql_command, conn);
+                var reader = cmd.ExecuteReader();
+                while (await reader.ReadAsync())
+                {
+                    Console.WriteLine(reader.GetString(0));
+                }
+                conn.Close();
+
             }
         }
 
@@ -122,9 +131,9 @@ namespace mock_data
                 for (int j = 0; j < schüler_pro_klasse; j++)
                 {
                     string schüler = GenerateSchüler(klassen[i], 2007, 2009);
-                    string sql_command = "INSERT INTO schüler(name, vorname, geburtsdatum, klasse) VALUES(" + schüler + ")";
+                    string sql_command = "INSERT INTO schüler(name, vorname, geburtsdatum, klasse) VALUES(" + schüler + ");";
                     await using var command = dataSource.CreateCommand(sql_command);
-                    await using var reader = await command.ExecuteReaderAsync();
+                    await using var reader = command.ExecuteReader();
 
                 }
             }
@@ -136,8 +145,8 @@ namespace mock_data
             var connectionString = "Host=localhost;Username=postgres;Password=mypass;Database=schuldatenbank";
             await using var dataSource = NpgsqlDataSource.Create(connectionString);
             //Retrieve all lehrers from database
-            await using var getlehrer_command = dataSource.CreateCommand("SELECT * FROM lehrer");
-            await using var getlehrer_reader = await getlehrer_command.ExecuteReaderAsync();
+            await using var getlehrer_command = dataSource.CreateCommand("SELECT * FROM lehrer;");
+            await using var getlehrer_reader = getlehrer_command.ExecuteReader();
             string[] lehrerlastnames = new string[lehrernr];
             string[] lehrerfirstnames = new string[lehrernr];
             string[] lehrerbirthdates = new string[lehrernr];
@@ -181,9 +190,9 @@ namespace mock_data
 
 
                     string kurs = GenerateKurs(fächer[j], suitable_lehrerlastnames, suitable_lehrerfirstnames, suitable_lehrerbirthdates, klassen[i]);
-                    string sql_command = "INSERT INTO kurse(kursbezeichnung, fach, lehrername, lehrervorname, lehrergeburtsdatum, klasse) VALUES(" + kurs + ")";
+                    string sql_command = "INSERT INTO kurse(kursbezeichnung, fach, lehrername, lehrervorname, lehrergeburtsdatum, klasse) VALUES(" + kurs + ");";
                     await using var command = dataSource.CreateCommand(sql_command);
-                    await using var reader = await command.ExecuteReaderAsync();
+                    await using var reader = command.ExecuteReader();
                 }
             }
         }
@@ -194,8 +203,8 @@ namespace mock_data
             await using var dataSource = NpgsqlDataSource.Create(connectionString);
             // Retrieve all schüler from database
             int schülernr = schüler_pro_klasse * klassen.Length;
-            await using var getschüler_command = dataSource.CreateCommand("SELECT * FROM schüler");
-            await using var getschüler_reader = await getschüler_command.ExecuteReaderAsync();
+            await using var getschüler_command = dataSource.CreateCommand("SELECT * FROM schüler;");
+            await using var getschüler_reader = getschüler_command.ExecuteReader();
             string[] schülerlastnames = new string[schülernr];
             string[] schülerfirstnames = new string[schülernr];
             string[] schülerbirthdates = new string[schülernr];
@@ -213,8 +222,8 @@ namespace mock_data
 
             // Retrieve all kurse from database
             int kurse_nr = klassen.Length * fächer.Length;
-            await using var getkurse_command = dataSource.CreateCommand("SELECT * FROM kurse");
-            await using var getkurse_reader = await getkurse_command.ExecuteReaderAsync();
+            await using var getkurse_command = dataSource.CreateCommand("SELECT * FROM kurse;");
+            await using var getkurse_reader = getkurse_command.ExecuteReader();
             string[] kurse = new string[kurse_nr];
             string[] kursklassen = new string[kurse_nr];
 
@@ -237,18 +246,18 @@ namespace mock_data
                         string klausurnote1 = GenerateKlausurnote(kurse[i], schülerlastnames[j], schülerfirstnames[j], schülerbirthdates[j], 2023, 2024, grades);
                         string klausurnote2 = GenerateKlausurnote(kurse[i], schülerlastnames[j], schülerfirstnames[j], schülerbirthdates[j], 2023, 2024, grades);
                         string klausurnote3 = GenerateKlausurnote(kurse[i], schülerlastnames[j], schülerfirstnames[j], schülerbirthdates[j], 2023, 2024, grades);
-                        string sql_command = "INSERT INTO mitarbeitsnoten (kursbezeichnung, schülername, schülervorname, schülergeburtsdatum, note) VALUES(" + mitarbeitsnote + ")";
+                        string sql_command = "INSERT INTO mitarbeitsnoten (kursbezeichnung, schülername, schülervorname, schülergeburtsdatum, note) VALUES(" + mitarbeitsnote + ");";
                         await using var command = dataSource.CreateCommand(sql_command);
-                        await using var reader = await command.ExecuteReaderAsync();
-                        sql_command = "INSERT INTO klausurnoten (kursbezeichnung, schülername, schülervorname, schülergeburtsdatum, prüfungsdatum, note) VALUES(" + klausurnote1 + ")";
+                        await using var reader = command.ExecuteReader();
+                        sql_command = "INSERT INTO klausurnoten (kursbezeichnung, schülername, schülervorname, schülergeburtsdatum, prüfungsdatum, note) VALUES(" + klausurnote1 + ");";
                         await using var command1 = dataSource.CreateCommand(sql_command);
-                        await using var reader1 = await command1.ExecuteReaderAsync();
-                        sql_command = "INSERT INTO klausurnoten (kursbezeichnung, schülername, schülervorname, schülergeburtsdatum, prüfungsdatum, note) VALUES(" + klausurnote2 + ")";
+                        await using var reader1 = command1.ExecuteReader();
+                        sql_command = "INSERT INTO klausurnoten (kursbezeichnung, schülername, schülervorname, schülergeburtsdatum, prüfungsdatum, note) VALUES(" + klausurnote2 + ");";
                         await using var command2 = dataSource.CreateCommand(sql_command);
-                        await using var reader2 = await command2.ExecuteReaderAsync();
-                        sql_command = "INSERT INTO klausurnoten (kursbezeichnung, schülername, schülervorname, schülergeburtsdatum, prüfungsdatum, note) VALUES(" + klausurnote3 + ")";
+                        await using var reader2 = command2.ExecuteReader();
+                        sql_command = "INSERT INTO klausurnoten (kursbezeichnung, schülername, schülervorname, schülergeburtsdatum, prüfungsdatum, note) VALUES(" + klausurnote3 + ");";
                         await using var command3 = dataSource.CreateCommand(sql_command);
-                        await using var reader3 = await command3.ExecuteReaderAsync();
+                        await using var reader3 = command3.ExecuteReader();
                     }
                 }
             }
