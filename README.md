@@ -17,13 +17,11 @@ Dieses Projekt dient als Demonstration dafür, wie eine Lehrer- und Schülerdate
 ## Anleitung
 
 ### Erstellung der Datenbank
-1. Öffnen Sie psql, indem Sie `psql -U username` in der Kommandozeile eingeben, wobei `username` durch den PostgreSQL Nutzernamen zu ersetzen ist (default: `psql -U postgres`)
-2. Geben Sie `CREATE DATABASE schuldatenbank;` ein
-3. Schließen Sie psql mit `\q`
-4. Erstellen Sie die (leeren) Tabellen in der Datenbank, indem Sie `psql -U username -d schuldatenbank -a -f create_tables.sql` in der Kommandozeile eingeben, wobei `username` durch den PostgreSQL Nutzernamen zu ersetzen ist
+1. Geben Sie `psql -U username -a -f create_db.sql` in der Kommandozeile ein, wobei `username` durch den PostgreSQL Nutzernamen zu ersetzen ist (default: `psql -U postgres -a -f create_db.sql`)
+2. Geben Sie `psql -U username -d schuldatenbank -a -f create_tables.sql` in der Kommandozeile ein, wobei `username` durch den PostgreSQL Nutzernamen zu ersetzen ist
 
 ### Füllen der Datenbank
-5. Um die Datenbank mit künstlichen Daten zu füllen, starten Sie ein neues Terminal in Visual Studio Code und geben Sie folgenden Befehl ein: `dotnet run fill_db`
+3. Um die Datenbank mit künstlichen Daten zu füllen, starten Sie ein neues Terminal in Visual Studio Code und geben Sie folgenden Befehl ein: `dotnet run fill_db`
 
 ### Interaktion mit der Datenbank
 6. Um einen Eintrag zur Lehrertabelle hinzuzufügen, geben Sie folgenden Befehl ein: `dotnet run add_teacher NAME VORNAME GEBDATUM FACH1 FACH2 FACH3`, wobei die Worte in Großbuchstaben durch die jeweiligen Attribute zu ersetzen sind, also z.B. `dotnet run add_teacher Mustermann Max 01.01.1980 Deutsch Mathe Englisch`
