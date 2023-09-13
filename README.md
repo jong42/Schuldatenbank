@@ -4,7 +4,7 @@ Dieses Projekt dient als Demonstration dafür, wie eine Lehrer- und Schülerdate
 ## Verwendete Software
 * OS: Linux Ubuntu
 * psql (PostgreSQL) 14.9
-* Visual Studio Code mit C# und C# DevKit Extensions 
+* Visual Studio Code mit den Extensions C# und C# DevKit 
   
 ## Anleitung
 
