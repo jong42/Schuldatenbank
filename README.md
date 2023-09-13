@@ -58,8 +58,8 @@ Lehrer haben einen Namen, Vornamen und ein Geburtsdatum. Durch diese drei Eigens
 ## Nächste Schritte
 
  * Tests schreiben
- * In Docker COntainer verpacken
- * Weitere Feaures hinzufügen (Stundenpläne erstellen, Gesamtnoten berechnen)
+ * In Docker Container verpacken
+ * Weitere Features hinzufügen (Stundenpläne erstellen, Gesamtnoten berechnen)
  * Kurse individuell pro Schüler ermöglichen anstatt pro Klasse
  * ...
 
