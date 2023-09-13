@@ -1,18 +1,10 @@
 # Schuldatenbank
-Dieses Projekt dient als Demonstration dafür, wie eine Lehrer- und Schülerdatenbank in C# realisiert werden kann. Das Projekt ist inspiriert durch die [LUSD](https://www.sinc.de/lusd/) Datenbank. Die Datenbank soll vor allem dazu dienen, Schulnoten und Stundenpläne zu verwalten. Wichtige Entitäten in der Datenbank sind Lehrer, Schüler, Klassen, Kurse und Noten.
+Dieses Projekt dient als Demonstration dafür, wie eine Lehrer- und Schülerdatenbank in C# realisiert werden kann. Das Projekt ist inspiriert durch die [LUSD](https://www.sinc.de/lusd/) Datenbank und soll dazu dienen, Schulnoten und Stundenpläne zu verwalten. Wichtige Entitäten in der Datenbank sind Lehrer, Schüler, Klassen, Kurse und Noten. Das Projekt ist nicht als fertiges Produkt zu verstehen, sondern stellt lediglich einen Prototyp dar.
 
-## Geplante Features
- * Grundlegende Funktionen: Hinzufügen und Löschen von Schülern, Lehrern, Kursen, Noten
- * Zeitkonflikte zwischen Kursen erkennen
- * Automatisiert einen konfliktfreien Stundenplan für alle Klassen erstellen
- * Stundenplan für Klassen ausgeben
- * Stundenplan für Lehrer ausgeben
- * Noten berechnen und Zeugnisse generieren
-
-## Voraussetzungen
-
-* psql
-* Visual Studio Code mit C# Extension (TODO: Welche Extensions genau?)
+## Verwendete Software
+* OS: Linux Ubuntu
+* psql (PostgreSQL) 14.9
+* Visual Studio Code mit C# und C# DevKit Extensions 
   
 ## Anleitung
 
@@ -62,12 +54,17 @@ Ein Lehrer kann mehrere Kurse unterrichten, ein Kurs wird aber immer von genau e
 Lehrer haben einen Namen, Vornamen und ein Geburtsdatum. Durch diese drei Eigenschaften kann ein Lehrer eindeutig identifiziert werden. Lehrer haben außerdem bis zu drei Fächer, die sie unterrichten können. Schüler haben ebenfalls Namen, Vornamen und ein Geburtsdatum, und können durch diese Eigenschaften eindeutig identifiziert werden. Schüler gehören zu einer Klasse. Klassen belegen Kurse, in denen sie von einem Lehrer in einem Fach unterrichtet werden. Kurse werden durch ihre Kursbezeichnung identifiziert. Kurse finden zu bestimmten Terminen statt, ein Kurstermin wird duch den dazugehörigen Kurs sowie den Wochentag und die Uhrzeit, an dem er stattfindet, identifiziert. Schüler erhalten Klausurnoten und Mitarbeitsnoten in den einzelnen Kursen. Eine Note gehört zu einem Schüler, der wiederum durch Name, Vorname und Geburtsdatum identifiziert wird. Diese drei Attribute sowie der Kursname sind notwendig, um eine Note eindeutig zu identifizieren. Bei Klausurnoten ist zusätzlich noch das Datum der Klausur notwendig, da innerhalb eines Kurses mehrere Klausuren geschrieben werden. Bei Mitarbeitsnoten ist dies nicht notwendig, da es in einem Kurs nur eine Mitarbeitsnote pro Schüler gibt. Schließlich muss natürlich auch die Note selbst als Eintrag enthalten sein.
 
 
-## Weiterführende Arbeiten
+## Nächste Schritte
 
 Credentials nicht hardcoden <br />
-Raumbelegungen hinzufügen <br />
-Kurse, die weniger als einmal die Woche stattfinden <br />
-Halbjahr berücksichtigen <br />
-Schüler wechselt Klasse <br />
-Klassen haben natürlich nicht geschlossen die selben Kurse, jeder Schüler kann individuell Kurse besuchen <br />
+
+
+
+ * Tests schreiben
+ * In Docker COntainer verpacken
+ * Weitere Feaures hinzufügen (Stundenpläne erstellen, Gesamtnoten berechnen)
+ * Kurse individuell pro Schüler ermöglichen anstatt pro Klasse
+ * ...
+
+
 
