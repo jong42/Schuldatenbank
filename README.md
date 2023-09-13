@@ -18,7 +18,7 @@ Dieses Projekt dient als Demonstration dafür, wie eine Lehrer- und Schülerdate
 
 ### Erstellung der Datenbank
 1. Öffnen Sie psql, indem Sie `postgres=# psql -U username` in der Kommandozeile eingeben, wobei `username` durch den PostgreSQL Nutzernamen zu ersetzen ist (default: `postgres=# psql -U postgres`)
-2. Geben Sie `CREATE DATABASE schuldatenbank` ein
+2. Geben Sie `CREATE DATABASE schuldatenbank;` ein
 3. Schließen Sie psql mit `\q`
 4. Erstellen Sie die (leeren) Tabellen in der Datenbank, indem Sie `psql -U username -d myDataBase -a -f create_tabels.sql` in der Kommandozeile eingeben, wobei `username` durch den PostgreSQL Nutzernamen zu ersetzen ist
 
