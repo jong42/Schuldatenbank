@@ -1,4 +1,4 @@
 FROM ubuntu
 WORKDIR /schuldatenbank
 COPY . .
-CMD "ls"
+CMD "apt-get update"
