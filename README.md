@@ -20,7 +20,7 @@ Dieses Projekt dient als Demonstration dafür, wie eine Lehrer- und Schülerdate
 1. Öffnen Sie psql, indem Sie `psql -U username` in der Kommandozeile eingeben, wobei `username` durch den PostgreSQL Nutzernamen zu ersetzen ist (default: `psql -U postgres`)
 2. Geben Sie `CREATE DATABASE schuldatenbank;` ein
 3. Schließen Sie psql mit `\q`
-4. Erstellen Sie die (leeren) Tabellen in der Datenbank, indem Sie `psql -U username -d myDataBase -a -f create_tables.sql` in der Kommandozeile eingeben, wobei `username` durch den PostgreSQL Nutzernamen zu ersetzen ist
+4. Erstellen Sie die (leeren) Tabellen in der Datenbank, indem Sie `psql -U username -d schuldatenbank -a -f create_tables.sql` in der Kommandozeile eingeben, wobei `username` durch den PostgreSQL Nutzernamen zu ersetzen ist
 
 ### Füllen der Datenbank
 5. Um die Datenbank mit künstlichen Daten zu füllen, starten Sie ein neues Terminal in Visual Studio Code und geben Sie folgenden Befehl ein: `dotnet run fill_db`
